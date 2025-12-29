@@ -1,6 +1,6 @@
 # MIRA - Advanced OSINT Chatbot
 
-![MIRA]<img width="848" height="942" alt="Pasted image" src="https://github.com/user-attachments/assets/33bb51fa-869c-48ea-b8af-5d72675e66c8" />
+![MIRA]<img width="833" height="929" alt="Screenshot from 2025-12-30 00-18-18" src="https://github.com/user-attachments/assets/982ff941-2a4f-4ed8-8f6f-08a1f57cb534" />
 
 > **Made by Yousef.bassem**
 
