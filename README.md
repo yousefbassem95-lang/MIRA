@@ -10,30 +10,44 @@ Mira is a powerful, modular OSINT (Open Source Intelligence) chatbot and toolset
 **⚠️ DISCLAIMER: This tool is for educational and ethical testing purposes only. The authors are not responsible for any misuse.**
 
 ## Features
-- **Mobile Number Intelligence**: Carrier, location, and format validation.
-- **Username Recon**: Check availability across multiple social platforms.
-- **Email Analysis**: Domain checks and format validation.
-- **Deep/Darkweb Checks**: Connectivity and availability checks for .onion sites (Requires Tor).
-- **Social Media Analysis**: Targeted platform checks.
-- **Google Dorking**: Automated dork generation.
-- **Web Scraping**: Extract info from targets.
-- **Hunting**: Fact aggregation and analysis.
+*   **🧠 AI Detective Mode**: Integrates **Gemini** or **OpenAI** to analyze your findings and generate a summary, threat assessment, and investigation leads.
+*   **🚀 Overload Mode (Auto-Recon)**: Automated intelligence gathering. Inputs multiple seeds (phones, usernames, emails), correlates data, performs deep searches (Auto-Dorking), and generates reports.
+*   **📱 Mobile Number Intelligence**: Validation, Carrier, Region, Timezone lookup.
+*   **👤 Username Recon**: Check username presence across social media.
+*   **📧 Email Analysis**: Format validation, MX record check, Disposable email detection.
+*   **🌐 web Scraper**: Extract emails and phone numbers from websites.
+*   **🧅 Darkweb Tools**: Tor connection check, .onion site availability check.
+*   **🕸️ Social Media Analysis**: Extract metadata (Title, Description, Image) from profile URLs.
+*   **🔍 Google Dorking**: Automated and manual generation of dorks for deep searching.
+*   **📄 Reporting**: specific findings are saved to local text files in Overload Mode.
 - **Privacy First**: Optional Tor/Proxy tunneling support.
 
 ## Installation
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/Yousef-bassem/Mira.git
+    cd MIRA
+    ```
+2.  **Set up Python Environment** (Recommended):
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # Linux/Mac
+    # .\venv\Scripts\activate  # Windows
+    ```
+3.  **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **Configuration (New!)**:
+    To enable AI features, create a `.env` file in the project root:
+    ```bash
+    cp .env.example .env
+    ```
+    Open `.env` and paste your API key (Gemini or OpenAI).
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/MIRA.git
-   cd MIRA
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. (Optional) For Darkweb features, ensure Tor is installed and running on your system (default port 9050).
+5.  **Install Tor** (Optional, for Darkweb features):
+    *   **Linux**: `sudo apt install tor` then `sudo systemctl start tor`
+ed and running on your system (default port 9050).
 
 ## Usage
 

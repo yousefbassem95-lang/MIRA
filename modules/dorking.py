@@ -1,13 +1,14 @@
 from colorama import Fore, Style
 import urllib.parse
 
-def run():
-    print(f"\n{Fore.CYAN}[*] Google Dorking Module Loaded")
-    print(f"{Fore.WHITE}Generate Google Dorks to find specific information.")
-    
-    target = input(f"{Fore.YELLOW}Enter target domain or keyword: {Style.RESET_ALL}").strip()
-    
-    dorks = {
+try:
+    from googlesearch import search
+except ImportError:
+    search = None
+
+def generate_queries(target):
+    """Returns a dict of dork types and queries."""
+    return {
         "Public Directories": f"site:{target} intitle:index.of",
         "Config Files": f"site:{target} ext:xml | ext:conf | ext:cnf | ext:reg | ext:inf | ext:rdp | ext:cfg | ext:txt | ext:ini",
         "Database Files": f"site:{target} ext:sql | ext:dbf | ext:mdb",
@@ -18,6 +19,24 @@ def run():
         "Publicly Exposed Documents": f"site:{target} ext:doc | ext:docx | ext:odt | ext:pdf | ext:rtf | ext:sxw | ext:psw | ext:ppt | ext:pptx | ext:pps | ext:csv",
         "PHP Info": f"site:{target} ext:php intitle:phpinfo \"published by the PHP Group\""
     }
+
+def perform_search(query, num_results=5):
+    """Executes a google search and returns URLs."""
+    if not search:
+        return []
+    try:
+        # verify if search returns an iterator (typical for googlesearch-python)
+        return list(search(query, num_results=num_results, stop=num_results, pause=2))
+    except Exception:
+        return []
+
+def run():
+    print(f"\n{Fore.CYAN}[*] Google Dorking Module Loaded")
+    print(f"{Fore.WHITE}Generate Google Dorks to find specific information.")
+    
+    target = input(f"{Fore.YELLOW}Enter target domain or keyword: {Style.RESET_ALL}").strip()
+    
+    dorks = generate_queries(target)
 
     print(f"\n{Fore.GREEN}[*] Generated Dorks for: {target}\n")
     

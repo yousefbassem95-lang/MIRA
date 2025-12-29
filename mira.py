@@ -9,6 +9,38 @@ init(autoreset=True)
 
 BANNER = f"""
 {Fore.CYAN}
+              #####                    ****                     #####   
+              #######                 ******                   ######             
+          ####   ##########           ******             ##########  ###          
+         #####           #######       ****        ########         #####        
+         #####                #####             #####               #####        
+           #####################  #   #####     # ######################         
+                              ###   #########   ###                            
+                       #######    ############      ######                       
+                     ##########   #############    #########                     
+                   ###########    #############    ###########                   
+                 ######       ##  ############# ##         ######                 
+               #####        #####  ###########  ####         #####               
+             ****#        *******#  #########   #******         #****             
+           ****         **+++***     ######      ***+++***        ****           
+         ***          *++++*+  ***  *+++++++*  *** ++++++**          ***         
+       **           *+++++    *+++  ++++++++   +++*    ++++++*          **       
+                  +++++       +=+    +=====+    +=+      +++++*                  
+                ++++         +=+     +=====+     +=+        ++++*                
+              ++==          +=+      +=====+      +=+          ==++              
+            ++=            ===       =----=        ===            ==+            
+                           ==        =----=         ==              =++         
+                          ==         =----=          ==                          
+                         ==          =-::-=           ==                         
+                         =            =::=             =                         
+                        =             =::=              =                        
+                       -              =..=               -                       
+                      :               :.:                 :                       
+                                      :::                                       
+                                      :::                                        
+                                      ---                                        
+                                      |||                                           
+
 ███╗   ███╗██╗██████╗  █████╗ 
 ████╗ ████║██║██╔══██╗██╔══██╗
 ██╔████╔██║██║██████╔╝███████║
@@ -38,6 +70,7 @@ def check_security():
 def main_menu():
     while True:
         print(f"\n{Fore.WHITE}Select an Module:{Style.RESET_ALL}")
+        print(f"{Fore.RED}0. OVERLOAD MODE (Auto-Recon){Style.RESET_ALL}")
         print(f"{Fore.CYAN}1. Mobile Number Intelligence")
         print(f"{Fore.CYAN}2. Username Recon")
         print(f"{Fore.CYAN}3. Email Analysis")
@@ -48,9 +81,12 @@ def main_menu():
         print(f"{Fore.CYAN}8. Google Dorking")
         print(f"{Fore.CYAN}99. Exit")
         
-        choice = input(f"\n{Fore.YELLOW}Mira > {Style.RESET_ALL}")
+        choice = input(f"\n{Fore.YELLOW}Mira > {Style.RESET_ALL}").strip()
         
-        if choice == '1':
+        if choice == '0':
+            from modules import overload
+            overload.run()
+        elif choice == '1':
             from modules import mobile
             mobile.run()
         elif choice == '2':
@@ -78,7 +114,7 @@ def main_menu():
             print("Exiting...")
             sys.exit()
         else:
-            print(f"{Fore.RED}Invalid selection.")
+            print(f"{Fore.RED}Invalid selection: '{choice}'")
 
 def main():
     print_banner()

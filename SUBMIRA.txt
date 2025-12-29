@@ -1,1 +1,31 @@
 okay now look we need to create a brain chatbot that can control OSINT tools to be able to FIND 1 mobile numbers 2 usernames 3 Email addresses 4 Social media accounts 5 look if the target has a deepweb/darkweb history 6 hunting facts and clues to be able to identify a target 7 to be able to scrape websites for info about target 8 an expert in google Dorking . and we need it to have and i want you to think deeply before you build this for us make sure your doing it correctly so you don't have to keep changing things while working and will call it Mira made by Yousef.bassem, and we will need to make sure that it will be using VPN or tunneling locally so the user don't have to worry. and we need to make sure its perfect for github and huggingface 
+
+
+
+===================================================================================================================================================================================
+
+
+now we need to make it able to pip the information into each other function it has so it can give feedback from one piece of information to locate other information, and add a overload option that ask the user for all the info the user can provide, so it can look for any passable links for social media or information on tor network for the target or pic or Videos.... and make it able to find information from one of the options it provides 
+
+
+
+now lets make it more powerful by making take more than one piece of info in each section while in overload mode. so that when it looks for information it can find more data so it should go like this use will be asked to add a number first for example the tool will ask if he got another number he wants to add to the data that the tool is taking and same for each section even if any suspected Onion or Deepbweb links to make sure to collect as much as passable from the user before it looks for info 
+
+
+
+now lets make it expand on the search and make it look through every passable scenario, page, leak.... anything it can find and validate it and then provide information. and we need to add a button pip or download in a txt file all the result.   
+
+=========================================================================================================================================================================================
+
+
+     M     M   IIIII   RRRRR      AAA
+     MM   MM     I     R   R     A   A
+     M M M M     I     RRRRR    A     A
+     M  M  M     I     R  R     AAAAAAA
+     M     M   IIIII   R   R   A        A
+                              A          A
+
+
+
+
+

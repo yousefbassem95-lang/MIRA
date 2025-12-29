@@ -15,6 +15,24 @@ SITES = {
     "GitLab": "https://gitlab.com/{}"
 }
 
+def search(username, use_tor=False):
+    """Returns a list of found URLs."""
+    found_urls = []
+    session = create_tor_session() if use_tor else requests.Session()
+    
+    for site, url_template in SITES.items():
+        url = url_template.format(username)
+        try:
+            # We print progress here because username checks are slow, but logic is separated
+            # Ideally callback or yield, but simple print is fine for now
+            response = session.get(url, timeout=10)
+            if response.status_code == 200:
+                found_urls.append({"site": site, "url": url})
+        except Exception:
+            pass # Silent fail for API logic
+            
+    return found_urls
+
 def run():
     print(f"\n{Fore.CYAN}[*] Username Recon Module Loaded")
     username = input(f"{Fore.YELLOW}Enter target username: {Style.RESET_ALL}").strip()
@@ -24,16 +42,18 @@ def run():
 
     use_tor = input(f"{Fore.YELLOW}Use Tor for requests? (y/n): {Style.RESET_ALL}").lower() == 'y'
     
+    print(f"{Fore.BLUE}[*] Scanning {len(SITES)} sites for '{username}'...")
+    
+    # We re-implement the visual loop here to keep the "Hacker UI" feel
+    # The search() function is for the Overload coordinator
+    
+    session = create_tor_session() if use_tor else requests.Session()
+
     for site, url_template in SITES.items():
         url = url_template.format(username)
         try:
             print(f"{Fore.BLUE}[*] Checking {site}...", end="\r")
-            
-            if use_tor:
-                session = create_tor_session()
-                response = session.get(url, timeout=10)
-            else:
-                response = requests.get(url, timeout=5)
+            response = session.get(url, timeout=5) # Shorter timeout for UI responsiveness
             
             if response.status_code == 200:
                 print(f"{Fore.GREEN}[+] FOUND: {site} -> {url}        ")

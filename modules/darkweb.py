@@ -8,6 +8,15 @@ ONION_SITES = {
     "DuckDuckGo": "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/"
 }
 
+def check(url):
+    """Checks if an onion URL is reachable."""
+    try:
+        session = create_tor_session()
+        response = session.get(url, timeout=20)
+        return {"url": url, "status": response.status_code, "reachable": response.status_code == 200}
+    except Exception:
+        return {"url": url, "status": "Error", "reachable": False}
+
 def run():
     print(f"\n{Fore.CYAN}[*] Darkweb Module Loaded")
     
@@ -24,16 +33,12 @@ def run():
     choice = input(f"{Fore.WHITE}Check connection to common darkweb engines? (y/n): {Style.RESET_ALL}").lower()
     
     if choice == 'y':
-        session = create_tor_session()
         for name, url in ONION_SITES.items():
-            try:
-                print(f"{Fore.BLUE}[*] Checking {name}...", end="\r")
-                r = session.get(url, timeout=20)
-                if r.status_code == 200:
-                    print(f"{Fore.GREEN}[+] {name} is UP ({url})      ")
-                else:
-                    print(f"{Fore.YELLOW}[?] {name} is reachable but returned {r.status_code}      ")
-            except Exception as e:
-                print(f"{Fore.RED}[-] {name} is DOWN or Unreachable      ")
+            print(f"{Fore.BLUE}[*] Checking {name}...", end="\r")
+            res = check(url)
+            if res['reachable']:
+                 print(f"{Fore.GREEN}[+] {name} is UP ({url})      ")
+            else:
+                 print(f"{Fore.YELLOW}[?] {name} is unreachble (Status: {res['status']})      ")
 
     input(f"\n{Fore.YELLOW}Press Enter to return to menu...{Style.RESET_ALL}")

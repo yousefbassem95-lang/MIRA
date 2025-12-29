@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
+venv/
 .env
-hunting_facts.json
+.DS_Storeing_facts.json
 .DS_Store
 venv/
