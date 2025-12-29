@@ -1,0 +1,10 @@
+requests==2.31.0
+beautifulsoup4==4.12.3
+phonenumbers==8.13.29
+stem==1.8.2
+gradio==4.16.0
+google==3.0.0
+python-whois==0.9.4
+colorama==0.4.6
+fake-useragent==1.4.0
+dnspython==2.5.0

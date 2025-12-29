@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+hunting_facts.json
+.DS_Store
+venv/
